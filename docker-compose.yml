@@ -1,0 +1,14 @@
+version: '3.8' # You can remove this line, it's obsolete
+services:
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_ROOT_PASSWORD=password
+    command: mongod --bind_ip_all # <--- ADD THIS LINE
+volumes:
+  mongo-data:
